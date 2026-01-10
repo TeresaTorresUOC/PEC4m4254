@@ -1,0 +1,17 @@
+<app-navbar (sectionChange)="onSectionChange($event)"></app-navbar>
+
+<main class="content">
+
+  <app-article-list
+    *ngIf="currentView === 'home' || currentView === 'articles'">
+  </app-article-list>
+
+  <app-article-new-template
+    *ngIf="currentView === 'new-template'">
+  </app-article-new-template>
+
+  <app-article-new-reactive
+    *ngIf="currentView === 'new-reactive'">
+  </app-article-new-reactive>
+
+</main>

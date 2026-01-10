@@ -1,0 +1,53 @@
+<h2>Create Article</h2>
+
+<form [formGroup]="article" (ngSubmit)="onSubmit()">
+
+  <input type="text" placeholder="Article Name"
+         formControlName="name">
+
+  <div class="error"
+      *ngIf="(article.controls.name.invalid && article.controls.name.touched) || submitted">
+    Article name is required
+  </div>
+
+  
+  <input type="text" placeholder="Article Price"
+         formControlName="price">
+
+  <div class="error"
+      *ngIf="(article.controls.price.invalid && article.controls.price.touched) || submitted">
+
+    <span *ngIf="article.controls.price.errors?.['required']">
+      Article price is required
+    </span>
+
+    <span *ngIf="article.controls.price.errors?.['pattern']">
+      Price must be numeric
+    </span>
+  </div>
+
+
+  <input type="text" placeholder="Article Image URL"
+         formControlName="imageUrl">
+
+  <div class="error"
+      *ngIf="(article.controls.imageUrl.invalid && article.controls.imageUrl.touched) || submitted">
+
+    <span *ngIf="article.controls.imageUrl.errors?.['required']">
+      Article Image URL is required
+    </span>
+
+    <span *ngIf="article.controls.imageUrl.errors?.['pattern']">
+      Article Image URL does not seem to be a valid URL
+    </span>
+  </div>
+
+
+  <label>
+    <input type="checkbox" formControlName="isOnSale"> On Sale
+  </label>
+
+
+  <button type="submit">Create</button>
+
+</form>

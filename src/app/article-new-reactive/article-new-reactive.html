@@ -1,0 +1,57 @@
+<h2>Create Article (Reactive Form)</h2>
+
+<form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+
+  <input type="text" placeholder="Article Name" formControlName="name">
+
+  <div class="error"
+       *ngIf="(f.name.invalid && f.name.touched) || submitted">
+
+    <span *ngIf="f.name.errors?.['required']">
+      Article name is required
+    </span>
+
+    <span *ngIf="f.name.errors?.['forbiddenName']">
+      This name is not allowed (Prueba, Test, Mock, Fake)
+    </span>
+  </div>
+
+  <input type="text" placeholder="Article Price" formControlName="price">
+
+  <div class="error"
+       *ngIf="(f.price.invalid && f.price.touched) || submitted">
+
+    <span *ngIf="f.price.errors?.['required']">
+      Article price is required
+    </span>
+
+    <span *ngIf="f.price.errors?.['min']">
+      Price must be at least 0.1 €
+    </span>
+  </div>
+
+
+  <input type="text" placeholder="Article Image URL" formControlName="imageUrl">
+
+  <div class="error"
+       *ngIf="(f.imageUrl.invalid && f.imageUrl.touched) || submitted">
+
+    <span *ngIf="f.imageUrl.errors?.['required']">
+      Article Image URL is required
+    </span>
+
+    <span *ngIf="f.imageUrl.errors?.['pattern']">
+      Article Image URL does not seem to be a valid URL
+    </span>
+  </div>
+
+
+  <label>
+    <input type="checkbox" formControlName="isOnSale">
+    On Sale
+  </label>
+
+  <button type="submit">Create</button>
+
+</form>
+
