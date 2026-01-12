@@ -1,11 +1,14 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { NgClass, NgIf } from '@angular/common';
+import { CurrencyPipe, NgClass, NgIf } from '@angular/common';
 import { Article } from '../models/article.model';
+import { DefaultImagePipe } from '../pipes/default-image-pipe';
+
+
 
 @Component({
   selector: 'app-article-item',
   standalone: true,
-  imports: [NgClass, NgIf],
+  imports: [NgClass, NgIf, DefaultImagePipe, CurrencyPipe,   DefaultImagePipe,],
   templateUrl: './article-item.html',
   styleUrls: ['./article-item.css'],
   changeDetection: ChangeDetectionStrategy.OnPush

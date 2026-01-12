@@ -1,10 +1,10 @@
 <div class="card" [ngClass]="{ 'on-sale': article.isOnSale }">
 
-  <img [src]="article.imageUrl" [alt]="article.name">
+  <img [src]="article.imageUrl | defaultImage" [alt]="article.name">
 
   <h3>{{ article.name }}</h3>
   <p class="price" [ngClass]="{ 'price-off': !article.isOnSale }">
-    {{ article.price }} €
+    {{ article.price | currency:'EUR':'symbol':'1.2-2' }}
   </p>
 
   <div *ngIf="article.isOnSale" class="controls">
