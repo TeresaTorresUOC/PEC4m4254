@@ -1,58 +1,31 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
-import { delay, tap } from 'rxjs/operators';
-import { Article } from '../models/article.model'; 
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Article } from '../models/article.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ArticleService {
-    private readonly articlesSubject = new BehaviorSubject<Article[]>([
-      { id: 1, name: 'Article 1', price: 19.99, imageUrl: 'assets/article1.jpg', quantityInCart: 0, isOnSale: false },
-      { id: 2, name: 'Article 2', price: 9.5, imageUrl: '', quantityInCart: 0, isOnSale: true },
-      { id: 3, name: 'Article 3', price: 29.0, imageUrl: 'assets/article3.jpg', quantityInCart: 0, isOnSale: false },
-    ]);
-    
+  private readonly baseUrl = 'http://localhost:3000/api/articles';
 
-  getArticles(): Observable<Article[]> {
-    return this.articlesSubject.asObservable().pipe(delay(0));
+  constructor(private readonly http: HttpClient) {}
+
+  getArticles(q?: string): Observable<Article[]> {
+    let params = new HttpParams();
+    if (q && q.trim()) {
+      params = params.set('q', q.trim());
+    }
+    return this.http.get<Article[]>(this.baseUrl, { params });
   }
 
   changeQuantity(articleID: number, chagenInQuantity: number): Observable<Article> {
-    const current = this.articlesSubject.getValue();
-    const idx = current.findIndex(a => a.id === articleID);
-
-    if (idx === -1) {
-      return throwError(() => new Error(`Article with id ${articleID} not found`));
-    }
-
-    const updated: Article = {
-      ...current[idx],
-      quantityInCart: Math.max(0, current[idx].quantityInCart + chagenInQuantity),
-    };
-
-    const next = [...current];
-    next[idx] = updated;
-
-    return of(updated).pipe(
-      tap(() => this.articlesSubject.next(next)),
-      delay(0)
-    );
+    return this.http.patch<Article>(`${this.baseUrl}/${articleID}`, {
+      changeInQuantity: chagenInQuantity,
+    });
   }
 
   create(article: Article): Observable<any> {
-    const current = this.articlesSubject.getValue();
-    const nextId = current.length ? Math.max(...current.map(a => a.id)) + 1 : 1;
-
-    const created: Article = {
-      ...article,
-      id: nextId,
-      quantityInCart: article.quantityInCart ?? 0,
-    };
-
-    return of({ ok: true }).pipe(
-      tap(() => this.articlesSubject.next([created, ...current])),
-      delay(0)
-    );
+    return this.http.post<any>(this.baseUrl, article);
   }
 }

@@ -1,5 +1,14 @@
 <h1>TPV Vinoteca!</h1>
 
+<!-- Buscador -->
+<div class="search">
+  <input
+    type="text"
+    [formControl]="searchControl"
+    placeholder="Buscar artículo..."
+  />
+</div>
+
 <div class="list" *ngIf="articles$ | async as articles">
   <app-article-item
     *ngFor="let art of articles"
@@ -7,4 +16,3 @@
     (quantityChange)="onQuantityChanged($event)"
   ></app-article-item>
 </div>
-
