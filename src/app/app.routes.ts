@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { userCanMatch } from './guards/user-can-match';
 
 export const appRoutes: Routes = [
   {
@@ -9,12 +8,12 @@ export const appRoutes: Routes = [
   },
   {
     path: 'article',
-    loadChildren: () => import('./article/article.module').then(m => m.ArticleModule),
+    loadChildren: () =>
+        import('./articles/article.module').then((m) => m.ArticleModule),
   },
   {
     path: '',
-    canMatch: [userCanMatch],
-    loadChildren: () => import('./user/user.module').then(m => m.UserModule),
+    loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
   },
   {
     path: '**',

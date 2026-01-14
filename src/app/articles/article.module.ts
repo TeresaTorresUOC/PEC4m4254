@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { authGuard } from '../guards/auth-guard';
+import { authGuard } from '../guards/auth.guard';
 import { ArticleCreatePageComponent } from './pages/article-create-page';
 import { ArticleDetailComponent } from './pages/article-detail';
 import { ArticleListPageComponent } from './pages/article-list-page';

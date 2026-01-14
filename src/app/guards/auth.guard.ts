@@ -1,9 +1,9 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { UserStore } from '../services/user-store';
+import { UserStoreService } from '../services/user-store';
 
 export const authGuard: CanActivateFn = () => {
-  const userStore = inject(UserStore);
+  const userStore = inject(UserStoreService);
   const router = inject(Router);
 
   if (userStore.token) {
@@ -11,4 +11,5 @@ export const authGuard: CanActivateFn = () => {
   }
 
   return router.createUrlTree(['/login']);
+  
 };

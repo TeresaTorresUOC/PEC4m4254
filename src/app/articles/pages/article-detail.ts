@@ -15,12 +15,13 @@ import { CurrencyPipe } from '@angular/common';
   styleUrls: ['./article-detail.css'],
 })
 export class ArticleDetailComponent {
-  readonly article$: Observable<Article> = this.route.paramMap.pipe(
-    switchMap(params => this.articleService.getArticle(Number(params.get('id')))),
+  readonly article$: Observable<Article | undefined> = this.route.paramMap.pipe(
+    switchMap(params => this.articleService.getArticleById(Number(params.get('id')))),
   );
 
   constructor(
     private readonly route: ActivatedRoute,
     private readonly articleService: ArticleService,
   ) {}
+  
 }
