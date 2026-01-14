@@ -1,0 +1,10 @@
+<h2>Register</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <input formControlName="username" placeholder="username" />
+  <input formControlName="password" placeholder="password" type="password" />
+  <button type="submit" [disabled]="form.invalid">Register</button>
+</form>
+
+<p *ngIf="msg">{{ msg }}</p>
+<p *ngIf="error">{{ error }}</p>

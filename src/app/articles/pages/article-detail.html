@@ -1,0 +1,16 @@
+<section class="detail" *ngIf="article$ | async as article">
+    <a class="secondary" routerLink="/article/list">Volver al listado</a>
+  
+    <div class="card">
+      <img [src]="article.imageUrl | defaultImage" [alt]="article.name" />
+  
+      <div class="info">
+        <h1>{{ article.name }}</h1>
+        <p class="price">{{ article.price | currency: 'EUR':'symbol':'1.2-2' }}</p>
+        <p class="status" [class.off]="!article.isOnSale">
+          {{ article.isOnSale ? 'Disponible' : 'No disponible para la venta' }}
+        </p>
+        <p class="stock">En carrito: {{ article.quantityInCart }}</p>
+      </div>
+    </div>
+  </section>

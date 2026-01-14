@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Article } from '../models/article.model';
+import { map } from 'rxjs/operators';
+
+
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +21,8 @@ export class ArticleService {
     }
     return this.http.get<Article[]>(this.baseUrl, { params });
   }
+  getArticleById(id: number): Observable<Article | undefined> { 
+    return this.getArticles().pipe( map(list => list.find(a => a.id === id)) ); }
 
   changeQuantity(articleID: number, chagenInQuantity: number): Observable<Article> {
     return this.http.patch<Article>(`${this.baseUrl}/${articleID}`, {

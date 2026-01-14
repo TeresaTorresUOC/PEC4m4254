@@ -1,0 +1,50 @@
+.detail {
+    margin: 1.5rem 0;
+    display: grid;
+    gap: 1.5rem;
+  }
+  
+  .secondary {
+    width: fit-content;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #2f80ed;
+    color: #2f80ed;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .card {
+    display: grid;
+    grid-template-columns: minmax(180px, 240px) 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  }
+  
+  img {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+  
+  .info {
+    display: grid;
+    gap: 0.6rem;
+  }
+  
+  .price {
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+  
+  .status {
+    font-weight: 600;
+    color: #12b76a;
+  }
+  
+  .status.off {
+    color: #d92d20;
+  }

@@ -1,8 +1,14 @@
 <div class="card" [ngClass]="{ 'on-sale': article.isOnSale }">
 
-  <img [src]="article.imageUrl | defaultImage" [alt]="article.name">
+  <img
+  [src]="article.imageUrl | defaultImage"
+  [alt]="article.name"
+  [routerLink]="['/article', article.id]"
+/>
+<h3>
+  <a [routerLink]="['/article', article.id]">{{ article.name }}</a>
+</h3>
 
-  <h3>{{ article.name }}</h3>
   <p class="price" [ngClass]="{ 'price-off': !article.isOnSale }">
     {{ article.price | currency:'EUR':'symbol':'1.2-2' }}
   </p>
