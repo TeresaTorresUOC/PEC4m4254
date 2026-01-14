@@ -4,9 +4,9 @@ import { ReactiveFormsModule, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, startWith, switchMap } from 'rxjs/operators';
 
-import { Article } from '../models/article.model';
+import { Article } from '../../../shared/models/article.model';
 import { ArticleItemComponent } from '../article-item/article-item';
-import { ArticleService } from '../services/article-service';
+import { ArticleService } from '../../services/article-service';
 
 @Component({
   selector: 'app-article-list',

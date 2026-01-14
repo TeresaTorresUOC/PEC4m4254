@@ -1,8 +1,8 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { CurrencyPipe, NgClass, NgIf } from '@angular/common';
-import { Article } from '../models/article.model';
-import { DefaultImagePipe } from '../pipes/default-image-pipe';
 import { RouterLink } from '@angular/router';
+import { Article } from '../../../shared/models/article.model';
+import { DefaultImagePipe } from '../../../pipes/default-image-pipe';
 
 
 

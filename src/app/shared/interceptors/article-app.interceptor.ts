@@ -6,7 +6,7 @@ import {
   HttpEvent,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { UserStoreService } from './user-store';
+import { UserStoreService } from '../services/user-store.service';
 
 @Injectable()
 export class ArticleAppInterceptor implements HttpInterceptor {

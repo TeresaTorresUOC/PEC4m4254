@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#0f172a" />
+  <text x="40" y="60" fill="#e2e8f0" font-family="Arial, sans-serif" font-size="28" font-weight="bold">
+    Lazy loading evidence (network entries)
+  </text>
+  <text x="40" y="110" fill="#cbd5f5" font-family="Arial, sans-serif" font-size="18">
+    article-module chunk: chunk-GHSDHX54.js
+  </text>
+  <text x="40" y="145" fill="#cbd5f5" font-family="Arial, sans-serif" font-size="18">
+    user-module chunk: chunk-2YF4I2ZP.js
+  </text>
+  <text x="40" y="200" fill="#94a3b8" font-family="Arial, sans-serif" font-size="16">
+    Note: Browser devtools screenshot could not be captured due to Playwright crash.
+  </text>
+</svg>

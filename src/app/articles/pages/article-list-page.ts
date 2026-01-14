@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { ArticleListComponent } from '../../article-list/article-list';
+import { ArticleListComponent } from '../components/article-list/article-list';
 
 @Component({
   selector: 'app-article-list-page',

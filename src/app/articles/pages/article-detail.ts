@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Observable, switchMap } from 'rxjs';
-import { Article } from '../../models/article.model';
-import { ArticleService } from '../../services/article-service';
+import { Article } from '../../shared/models/article.model';
+import { ArticleService } from '../services/article-service';
 import { DefaultImagePipe } from '../../pipes/default-image-pipe';
 import { CurrencyPipe } from '@angular/common';
 

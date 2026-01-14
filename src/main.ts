@@ -1,7 +1,7 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideHttpClient, withInterceptorsFromDi, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app/app';
-import { ArticleAppInterceptor } from './app/services/article-app.interceptor';
+import { ArticleAppInterceptor } from './app/shared/interceptors/article-app.interceptor';
 
 bootstrapApplication(AppComponent, {
   providers: [

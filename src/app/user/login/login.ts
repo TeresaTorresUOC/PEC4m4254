@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../../services/user.service';
-import { UserStoreService } from '../../services/user-store';
+import { UserService } from '../services/user.service';
+import { UserStoreService } from '../../shared/services/user-store.service';
 import { NgIf } from '@angular/common';
 
 @Component({

@@ -3,9 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 const routes: Routes = [
-  {path: '',
-  pathMatch: 'full',
-  redirectTo: 'article/list',
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'login',
   },
   {
     path: 'article',
@@ -16,7 +17,7 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
   },
-  { path: '**', redirectTo: 'article/list' },
+  { path: '**', redirectTo: 'login' },
 ];
 
 @NgModule({

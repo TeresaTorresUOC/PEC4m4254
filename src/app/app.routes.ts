@@ -4,7 +4,7 @@ export const appRoutes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'article/list',
+    redirectTo: 'login',
   },
   {
     path: 'article',
@@ -17,6 +17,7 @@ export const appRoutes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'article/list',
+    redirectTo: 'login',
   },
+  
 ];
