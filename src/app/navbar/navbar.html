@@ -1,9 +1,11 @@
 <nav class="navbar">
   <span class="logo">Wine Store</span>
   <ul class="menu">
-    <li><a routerLink="/login">Login</a></li>
-    <li><a routerLink="/register">Register</a></li>
+    <li *ngIf="!isAuthenticated"><a routerLink="/login">Login</a></li>
+    <li *ngIf="!isAuthenticated"><a routerLink="/register">Register</a></li>
     <li><a routerLink="/article/list">Wine List</a></li>
     <li><a routerLink="/article/create">Create Wine</a></li>
+    <li *ngIf="isAuthenticated"><button type="button" (click)="logout()">Logout</button></li>
   </ul>
+  
 </nav>

@@ -1,19 +1,29 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { NgIf } from '@angular/common';
+import { UserStoreService } from '../shared/services/user-store.service';
+
 
 type View = 'home' | 'articles' | 'new-template' | 'new-reactive';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, NgIf],
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.css']
 })
 export class NavbarComponent {
-  @Output() sectionChange = new EventEmitter<View>();
+  constructor(
+    private readonly userStore: UserStoreService,
+    private readonly router: Router
+  ) {}
 
-  select(view: View) {
-    this.sectionChange.emit(view);
+  get isAuthenticated(): boolean {
+    return this.userStore.isAuthenticated;
+  }
+  logout() {
+    this.userStore.clear();
+    this.router.navigateByUrl('/login');
   }
 }

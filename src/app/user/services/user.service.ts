@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 export interface LoginRequest {
   username: string;
@@ -18,7 +19,7 @@ export interface RegisterRequest {
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  private readonly baseUrl = 'http://localhost:3000';
+  private readonly baseUrl = environment.apiUrl;
 
   constructor(private readonly http: HttpClient) {}
 
@@ -31,7 +32,7 @@ export class UserService {
             res.headers.get('Authorization') ?? res.headers.get('x-access-token');
           const token = res.body?.token ?? headerToken?.replace(/^Bearer\s+/i, '');
 
-          return { token: token ?? 'FAKE_TOKEN' };
+          return { token: token ?? `FAKE_TOKEN_${payload.username}` };
         })
       );
   }

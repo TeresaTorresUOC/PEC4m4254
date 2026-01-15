@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Article } from '../../shared/models/article.model';
 import { map } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 
 
@@ -10,7 +11,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class ArticleService {
-  private readonly baseUrl = 'http://localhost:3000/wine';
+  private readonly baseUrl = `${environment.apiUrl}/api/articles`;
 
   constructor(private readonly http: HttpClient) {}
 
@@ -24,9 +25,9 @@ export class ArticleService {
   getArticleById(id: number): Observable<Article | undefined> { 
     return this.getArticles().pipe( map(list => list.find(a => a.id === id)) ); }
 
-  changeQuantity(articleID: number, chagenInQuantity: number): Observable<Article> {
+    changeQuantity(articleID: number, changeInQuantity: number): Observable<Article> {
     return this.http.patch<Article>(`${this.baseUrl}/${articleID}`, {
-      changeInQuantity: chagenInQuantity,
+      changeInQuantity,
     });
   }
 

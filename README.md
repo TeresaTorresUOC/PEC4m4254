@@ -1,5 +1,4 @@
-
- **PEC3**
+**PEC3 / PEC4**
 
 **Login UOC:** ttorrestorre
 
@@ -21,6 +20,40 @@ La aplicación contiene:
 * Gestión completa de validaciones: campos obligatorios, numéricos, regex para URL y restricción de nombres no permitidos.
 
 Todo el proyecto se ha desarrollado con Angular 18, formato standalone components, sin módulos tradicionales.
+
+## Ejecución (PEC4)
+
+El backend `server-articles` se encuentra fuera del proyecto Angular, en la misma carpeta padre que `ecommerce`.
+
+### Backend (server-articles)
+
+```bash
+cd ../server-articles
+npm i
+npm start
+```
+
+Endpoints esperados:
+
+* `GET http://localhost:3000/api/articles`
+* `POST http://localhost:3000/api/articles`
+* `PATCH http://localhost:3000/api/articles/:id` con `{ changeInQuantity: number }`
+* `POST http://localhost:3000/user/login`
+* `POST http://localhost:3000/user/register`
+
+Si hay problemas de CORS, habilitar acceso desde `http://localhost:4200` en el backend.
+
+### Frontend (ecommerce)
+
+```bash
+npm i
+npm start
+```
+
+La app consume el backend en `http://localhost:3000` con:
+
+* Articles: `http://localhost:3000/api/articles`
+* Auth: `http://localhost:3000/user/login` y `http://localhost:3000/user/register`
 
 
 **Tecnologías y características utilizadas**
@@ -47,31 +80,7 @@ En este ejercicio se creó el proyecto Angular utilizando Angular CLI, generando
 
 En este ejercicio desarrollé el componente `article-item`, encargado de mostrar un artículo individual. También creé el modelo `Article` con sus propiedades correspondientes. Implementé estilos condicionales usando `ngClass` para destacar los artículos en oferta y añadí la funcionalidad de incrementar y decrementar la cantidad de artículos mediante botones, permitiendo un comportamiento dinámico y actualizado en tiempo real dentro del componente.
 
-**Ejercicio 3:**
-
-En esta parte utilicé la directiva `ngIf` para mostrar u ocultar los botones de control en función de la disponibilidad del producto, de modo que si el artículo no estaba en venta, los botones no aparecían. Además, apliqué estilos condicionales al precio, haciéndolo visible en gris cuando el artículo no estaba disponible para la venta.
-
-### **Ejercicio 4:**
-
-En este ejercicio creé el componente `article-list`, encargado de gestionar un conjunto de artículos. Utilicé `ngFor` para listar varios elementos en pantalla y establecí comunicación entre el componente padre y el hijo mediante `Output`. La lógica de incrementar y decrementar cantidades se trasladó desde `article-item` hacia `article-list`, tal como pedía el ejercicio, centralizando la gestión dentro del componente padre.
-
-### **Ejercicio 5:**
-
-Aquí desarrollé una barra de navegación que permite alternar entre diferentes secciones de la aplicación utilizando `*ngIf`. Integré correctamente los componentes `article-list`, `article-new-template` y `article-new-reactive`, de manera que cada uno se muestra únicamente cuando corresponde según la opción seleccionada en el menú.
-
-### **Ejercicio 6:**
-
-Este ejercicio consistió en implementar un formulario basado en plantillas utilizando un `FormGroup`. Añadí validaciones como campos obligatorios, validación numérica para el precio y validación mediante expresión regular para comprobar URLs válidas. Los mensajes de error aparecen de forma dinámica cuando el usuario interactúa con los campos o cuando se intenta enviar el formulario sin cumplir los requisitos. También se gestionó correctamente el estado `touched` y la lógica asociada a `submitted`.
-
-### **Ejercicio 7:**
-
-En el último ejercicio desarrollé un formulario completamente reactivo empleando `FormBuilder`. Creé una validación personalizada llamada `NameArticleValidator` que impide introducir ciertos nombres como “Prueba”, “Test”, “Mock” o “Fake”. Además, añadí la validación de precio mínimo de 0.1 €, una expresión regular para verificar la validez de la URL de la imagen y la gestión de errores según la interacción del usuario o el intento de envío. Al enviar un formulario válido, los datos se muestran en la consola, sin añadirse aún a la lista de artículos, tal y como establece el enunciado.
-
-**Dificultades encontradas**
-
-Durante el desarrollo han surgido varias dificultades:
-
-Yo había trabajado anteriormente con Angular 15, donde todavía se usaban módulos, y con Angular 19 donde el enfoque es 100% standalone y cambia la estructura de los componentes.
+@@ -75,26 +109,25 @@ Yo había trabajado anteriormente con Angular 15, donde todavía se usaban módu
 Al usar Angular 18 he tenido que adaptarme al formato standalone components, imports manuales de cada componente y estructura sin módulos.
 
 He tenido algunos problemas con imports y rutas. Al avanzar los ejercicios, especialmente al agregar `article-list`, `article-new-template` y `article-new-reactive`, algunos componentes no se importaban correctamente, especialmente por la diferencia entre:
@@ -96,5 +105,4 @@ Otro de las dificultades que he tenido es especialmente el validator personaliza
 * Separación limpia de componentes para mayor claridad.
 * Validaciones visuales muy claras, igual que en los ejemplos.
 * Código organizado por carpetas (models, validators).
-
 

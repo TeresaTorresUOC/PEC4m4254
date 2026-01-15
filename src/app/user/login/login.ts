@@ -35,11 +35,11 @@ export class LoginComponent {
     this.error = '';
     if (this.form.invalid) return;
   
-    const { username } = this.form.getRawValue();
-  
-    this.userService.login({ username, password: 'SECRET' }).subscribe({
-      next: (res: any) => {
-        const token = res?.token ?? 'FAKE_TOKEN';
+    const { username, password } = this.form.getRawValue();
+
+    this.userService.login({ username, password }).subscribe({
+      next: (res) => {
+        const token = res?.token ?? `FAKE_TOKEN_${username}`;
         this.userStore.setToken(token);
         this.router.navigateByUrl('/article/list');
       },
