@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-const TOKEN_KEY = 'article-token';
+const TOKEN_KEY = 'wine-token';
 
 @Injectable({ providedIn: 'root' })
 export class UserStoreService {

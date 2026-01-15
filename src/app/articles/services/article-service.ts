@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class ArticleService {
-  private readonly baseUrl = 'http://localhost:3000/api/articles';
+  private readonly baseUrl = 'http://localhost:3000/wine';
 
   constructor(private readonly http: HttpClient) {}
 
